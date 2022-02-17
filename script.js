@@ -7,9 +7,7 @@ function computerPlay() {
  //   console.log(final[picker]);
   return final[picker];
 }
- let player = prompt("Will you choose, rock, paper, or scissors?");
- console.log(player);
- let comp = computerPlay();
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -17,8 +15,8 @@ function playRound(playerSelection, computerSelection) {
 playerSelection.toLowerCase();
 
  // if it's at tie
- console.log("you chose " + playerSelection + "!");
- console.log("the computer chose " + computerSelection + "!");
+// console.log("you chose " + playerSelection + "!");
+// console.log("the computer chose " + computerSelection + "!");
  if (playerSelection == "rock" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "paper"){
    return "It's a tie! Try again!"
  }
@@ -46,6 +44,9 @@ playerSelection.toLowerCase();
 // the next step is to create a game function that has rounds! Interesting!
 function game(){
   let round = 1;
+   let player = prompt("Will you choose, rock, paper, or scissors?");
+ console.log(player);
+ let comp = computerPlay();
   for (let i = 1; i <= 5; i++){
     if (round === 5){
       console.log("Round 5, Final Round!");
@@ -57,8 +58,9 @@ function game(){
     }
   }
 }
-
-console.log(game());
+let button = document.getElementById("start");
+button.addEventListener('click', () => {game()});
+//console.log(game());
 // My idea for this is once the player clicks the button, it opens up 3 new buttons
 // It will also say "choose, rock, paper, or scissors!"
 // once the choices are picked, the three buttons will disappear and text displaying their choiec will appear under "player choice"
