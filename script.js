@@ -10,51 +10,84 @@ function computerPlay() {
 let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
+let round = 1;
 function rockSel(){
- playerChoice = document.querySelector('#rock').value;
- //playRound(playerChoice, )
+ playerChoice = "rock"
+ document.querySelector('#selection').innerText = "You picked Rock!";
+ game();
+ round++;
 };
-document.querySelector('#rock').onclick = rockSel;
+document.querySelector('#rock').addEventListener('click', ()=> {rockSel()});
 function paperSel(){
-  playerChoice = document.querySelector('#paper').value;
+  playerChoice = "paper"
+  document.querySelector('#selection').innerText = "You picked Paper!";
+  game();
+  round++;
 }
-document.querySelector('#paper').onclick = paperSel;
+document.querySelector('#paper').addEventListener('click', ()=> {paperSel()});
 function scissorsSel(){
-  playerChoice = document.querySelector('#scissors').value;
+  playerChoice = "scissors"
+  document.querySelector('#selection').innerText = "You picked Scissors!";
+  game();
+  round++;
 }
-document.querySelector('#scissors').onclick = scissorsSel;
+document.querySelector('#scissors').addEventListener('click', ()=> {scissorsSel()});
 function playRound(playerSelection, computerSelection) {
-playerSelection.toLowerCase();
-
  // if it's at tie
 // console.log("you chose " + playerSelection + "!");
 // console.log("the computer chose " + computerSelection + "!");
  if (playerSelection == "rock" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "paper"){
-   return "It's a tie! Try again!"
+   document.getElementById("results").innerText = "It's a tie!"
  }
  // if the player loses
  if (playerSelection == "rock" && computerSelection == "paper"){
    computerScore++;
-   return "Paper beats rock, the computer wins!"
+   document.getElementById("results").innerText = "Paper beats rock, the computer wins!"
  } if (playerSelection == "scissors" && computerSelection == "rock"){
    computerScore++;
-   return "Rock beats Scissors, you lose!"
+   document.getElementById("results").innerText = "Rock beats Scissors, you lose!"
  } if (playerSelection == "paper" && computerSelection == "scissors"){
    computerScore++;
-   return "Scissors beats paper, you lose!"
+   document.getElementById("results").innerText = "Scissors beats paper, you lose!"
  }
  //if the player wins
  if (computerSelection == "rock" && playerSelection == "paper"){
    playerScore++
-   return "Paper beats rock, you win!"
+   document.getElementById("results").innerText = "Paper beats rock, you win!"
  } if (computerSelection == "paper" && playerSelection == "scissors"){
-   return "Scissors beats paper, you win!"
+   playerScore++
+   document.getElementById("results").innerText = "Scissors beats paper, you win!"
  } if (computerSelection == "scissors" && playerSelection == "rock"){
-   return "Rock beats scissors, you win!"
+   playerScore++
+   document.getElementById("results").innerText = "Rock beats scissors, you win!"
  }
+  document.getElementById("round").innerText = `Round: ${round}`
+document.getElementById("score").innerText = `Player Score: ${playerScore} AI Score: ${computerScore}`
 }
-// the next step is to create a game function that has rounds! Interesting!
+
 function game(){
+  let comp = computerPlay();
+  if (round < 5) {
+    let print = comp.charAt(0).toUpperCase() + comp.slice(1);
+    document.getElementById("ai-choice").innerText = `AI Choice: ${print}`
+    playRound(playerChoice, comp);
+  } else {
+    document.querySelector('#btn-loc').hidden = true;
+    let print = comp.charAt(0).toUpperCase() + comp.slice(1);
+    document.getElementById("ai-choice").innerText = `AI Choice: ${print}`
+    playRound(playerChoice, comp);
+    if (playerScore > computerScore){
+      document.getElementById("results").innerText = "You win! Click start to try again!"
+    } else if (playerScore < computerScore){
+      document.getElementById("results").innerText = "Too bad, the AI wins! Click start to try again!!"
+    } else if (playerScore === computerScore){
+    document.getElementById("results").innerText = "It's a tie, click start to try again!"
+  }
+   document.getElementById("start").hidden = false; 
+  }
+};
+// the next step is to create a game function that has rounds! Interesting!
+/*function game(){
   let round = 1;
  let comp = computerPlay();
   for (let i = 1; i <= 5; i++){
@@ -68,8 +101,22 @@ function game(){
     }
   }
 }
+*/
+function start(){
+  playerChoice = '';
+  playerScore = 0;
+  computerScore = 0;
+  round = 1;
+  document.getElementById("results").innerText = "";
+  document.getElementById("score").innerText = "";
+  document.querySelector('#selection').innerText = "";
+  document.getElementById("ai-choice").innerText = "";
+  document.getElementById("round").innerText = "";
+  document.getElementById("start").hidden = true;
+  document.querySelector('#btn-loc').hidden = false;
+}
 let button = document.getElementById("start");
-button.addEventListener('click', () => {game()});
+button.addEventListener('click', () => {start()});
 //console.log(game());
 // My idea for this is once the player clicks the button, it opens up 3 new buttons
 // It will also say "choose, rock, paper, or scissors!"

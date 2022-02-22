@@ -3,20 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>Rock-Paper-Scissors</title>
     <script src="script.js" defer></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="bg">
-      <h1>Rock-Paper-Scissors Tool</h1>
-      <p>Click below to play rock-paper-scissors!</p>
+      <h1>Rock-Paper-Scissors</h1>
+      <p>Click below to play rock-paper-scissors! The game ends in 5 rounds:</p>
       <button id="start">Start</button>
-      <div id="button-location" hidden>
-        <button id="Rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
+      <div id="btn-loc" hidden>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
       </div>
+      <div id="round"></div>
+      <div id="selection"></div>
+      <div id="ai-choice"></div>
+      <div id="score"></div>
       <div id="results"></div>
     </div>
     
