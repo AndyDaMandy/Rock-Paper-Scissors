@@ -4,15 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <script src="script.js" defer></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="bg">
-    <h1>Rock-Paper-Scissors Tool</h1>
-    <p>Click below to play rock-paper-scissors!</p>
-    <button id="start">Start</button>
-    <p></p>
+      <h1>Rock-Paper-Scissors Tool</h1>
+      <p>Click below to play rock-paper-scissors!</p>
+      <button id="start">Start</button>
+      <div id="button-location" hidden>
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">Scissors</button>
+      </div>
+      <div id="results"></div>
     </div>
-    <script src="script.js"></script>
+    
   </body>
 </html>

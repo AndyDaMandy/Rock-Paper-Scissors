@@ -7,10 +7,22 @@ function computerPlay() {
  //   console.log(final[picker]);
   return final[picker];
 }
-
+let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
-
+function rockSel(){
+ playerChoice = document.querySelector('#rock').value;
+ //playRound(playerChoice, )
+};
+document.querySelector('#rock').onclick = rockSel;
+function paperSel(){
+  playerChoice = document.querySelector('#paper').value;
+}
+document.querySelector('#paper').onclick = paperSel;
+function scissorsSel(){
+  playerChoice = document.querySelector('#scissors').value;
+}
+document.querySelector('#scissors').onclick = scissorsSel;
 function playRound(playerSelection, computerSelection) {
 playerSelection.toLowerCase();
 
@@ -44,8 +56,6 @@ playerSelection.toLowerCase();
 // the next step is to create a game function that has rounds! Interesting!
 function game(){
   let round = 1;
-   let player = prompt("Will you choose, rock, paper, or scissors?");
- console.log(player);
  let comp = computerPlay();
   for (let i = 1; i <= 5; i++){
     if (round === 5){
